@@ -1,0 +1,581 @@
+prefixes:
+  sd: "https://w3id.org/okn/o/sd#"
+  schema: "https://schema.org/"
+  owl: "http://www.w3.org/2002/07/owl#"
+
+
+sources:
+  main-source: ['../data/out.json~jsonpath', '$']
+  rel-source: ['../data/out.json~jsonpath', '$.releases[*]']
+
+
+mappings:
+  License:
+    sources:
+      - main-source
+    s: https://w3id.org/okn/i/License/$(name.result.spdx_id)
+    po:
+      - [a, schema:CreativeWork]
+      - [sd:name, $(license.result.name)]
+      - [sd:url, $(license.result.url), xsd:anyURI]
+      - [owl:sameAs, https://spdx.org/licenses/$(license.result.spdx_id)~iri]
+
+  SourceCode:
+    sources:
+      - main-source
+    s: https://w3id.org/okn/i/SoftwareSource/$(name.result.value)
+    po:
+      - [a, schema:SoftwareSourceCode]
+      - [sd:name, $(full_name.result.value)]
+      - [sd:codeRepository, $(code_repository.result.value), xsd:anyURI]
+      - [sd:programmingLanguage, $(programming_languages.result.value)]
+
+  Agent:
+    sources:
+      - main-source
+    s: https://w3id.org/okn/i/Agent/$(owner.result.value)
+    po:
+      - [a, schema:$(owner.result.type)]
+      - [schema:name, $(owner.result.value)]
+
+  Agent_release:
+    sources:
+      - rel-source
+    s: https://w3id.org/okn/i/Agent/$(author.name)
+    po:
+      - [a, schema:Person]
+      - [schema:name, $(author.name)]
+
+  SoftwareVersion:
+    sources:
+      - rel-source
+    s: https://w3id.org/okn/i/Release/$(release_id)
+    po:
+      - [a, sd:SoftwareVersion]
+      - [sd:name, $(name)]
+      - [sd:hasVersionId, $(tag)]
+      - [sd:url, $(value), xsd:anyURI]
+      - [sd:description, $(description)]
+      - [sd:downloadUrl, $(tarball_url), xsd:anyURI]
+      - [sd:downloadUrl, $(zipball_url), xsd:anyURI]
+      - [sd:downloadUrl, $(html_url), xsd:anyURI]
+      - [sd:dateCreated, $(date_created), xsd:dateTime]
+      - [sd:datePublished, $(date_published), xsd:dateTime]
+      - [sd:author, https://w3id.org/okn/i/Agent/$(author.name)~iri]
+
+  subjectSoftware:
+    sources:
+      - main-source
+    s: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+      - [a, sd:Software]
+
+  desc-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:description, $(description.result.value)]
+
+  desc-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: desc-TM
+    po:
+      - [sd:confidence, $(description.confidence)]
+      - [sd:technique, $(description.technique)]
+      - [sd:source, $(description.source)]
+
+  full_name-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:name, $(full_name.result.value)]
+
+  full_name-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: full_name-TM
+    po:
+      - [sd:confidence, $(full_name.confidence)]
+      - [sd:technique, $(full_name.technique)]
+      - [sd:source, $(full_name.source)]
+
+  citation-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:citation, $(citation.result.value), xsd:anyURI]
+
+  citation-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: citation-TM
+    po:
+      - [sd:confidence, $(citation.confidence)]
+      - [sd:technique, $(citation.technique)]
+      - [sd:source, $(citation.source)]
+
+  issue_tracker-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:issueTracker, $(issue_tracker.result.value), xsd:anyURI]
+
+  issue_tracker-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: issue_tracker-TM
+    po:
+      - [sd:confidence, $(issue_tracker.confidence)]
+      - [sd:technique, $(issue_tracker.technique)]
+      - [sd:source, $(issue_tracker.source)]
+
+  acknowledgement-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasAcknowledgements, $(acknowledgement.result.value)]
+
+  acknowledgement-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: acknowledgement-TM
+    po:
+      - [sd:confidence, $(acknowledgement.confidence)]
+      - [sd:technique, $(acknowledgement.technique)]
+      - [sd:source, $(acknowledgement.source)]
+
+  installation-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasInstallationInstructions, $(installation.result.value)]
+
+  installation-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: installation-TM
+    po:
+      - [sd:confidence, $(installation.confidence)]
+      - [sd:technique, $(installation.technique)]
+      - [sd:source, $(installation.source)]
+
+  invocation-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasExecutionCommand, $(invocation.result.value)]
+
+  invocation-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: invocation-TM
+    po:
+      - [sd:confidence, $(invocation.confidence)]
+      - [sd:technique, $(invocation.technique)]
+      - [sd:source, $(invocation.source)]
+
+  usage-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasUsageNotes, $(usage.result.value)]
+
+  usage-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: usage-TM
+    po:
+      - [sd:confidence, $(usage.confidence)]
+      - [sd:technique, $(usage.technique)]
+      - [sd:source, $(usage.source)]
+
+  download_url-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasDownloadUrl, $(download_url.result.value), xsd:anyURI]
+
+  download_url-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: download_url-TM
+    po:
+      - [sd:confidence, $(download_url.confidence)]
+      - [sd:technique, $(download_url.technique)]
+      - [sd:source, $(download_url.source)]
+
+  requirements-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:softwareRequirements, $(requirements.result.value)]
+
+  requirements-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: requirements-TM
+    po:
+      - [sd:confidence, $(requirements.confidence)]
+      - [sd:technique, $(requirements.technique)]
+      - [sd:source, $(requirements.source)]
+
+  contact-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:contactDetails, $(contact.result.value)]
+
+  contact-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: contact-TM
+    po:
+      - [sd:confidence, $(contact.confidence)]
+      - [sd:technique, $(contact.technique)]
+      - [sd:source, $(contact.source)]
+
+  contributing_guidelines-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:contributionInstructions, $(contributing_guidelines.result.value), xsd:anyURI]
+
+  contributing_guidelines-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: contributing_guidelines-TM
+    po:
+      - [sd:confidence, $(contributing_guidelines.confidence)]
+      - [sd:technique, $(contributing_guidelines.technique)]
+      - [sd:source, $(contributing_guidelines.source)]
+
+  support-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:supportDetails, $(support.result.value)]
+
+  support-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: support-TM
+    po:
+      - [sd:confidence, $(support.confidence)]
+      - [sd:technique, $(support.technique)]
+      - [sd:source, $(support.source)]
+
+  keywords-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:keywords, $(keywords.result.value)]
+
+  keywords-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: keywords-TM
+    po:
+      - [sd:confidence, $(keywords.confidence)]
+      - [sd:technique, $(keywords.technique)]
+      - [sd:source, $(keywords.source)]
+
+  faq-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasFAQ, $(faq.result.value)]
+
+  faq-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: faq-TM
+    po:
+      - [sd:confidence, $(faq.confidence)]
+      - [sd:technique, $(faq.technique)]
+      - [sd:source, $(faq.source)]
+
+  executable_example2-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasExecutableNotebook, $(executable_example.result.value)]
+
+  executable_example2-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: executable_example-TM
+    po:
+      - [sd:confidence, $(executable_example.confidence)]
+      - [sd:technique, $(executable_example.technique)]
+      - [sd:source, $(executable_example.source)]
+
+  code_of_conduct-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasCodeOfConduct, $(code_of_conduct.result.value)]
+
+  code_of_conduct-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: code_of_conduct-TM
+    po:
+      - [sd:confidence, $(code_of_conduct.confidence)]
+      - [sd:technique, $(code_of_conduct.technique)]
+      - [sd:source, $(code_of_conduct.source)]
+
+  dateCreated-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:date-created, $(date_created.result.value), xsd:dateTime]
+
+  dateCreated-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: dateCreated-TM
+    po:
+      - [sd:confidence, $(date_created.confidence)]
+      - [sd:technique, $(date_created.technique)]
+      - [sd:source, $(date_created.source)]
+
+  date_updated-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:dateModified, $(date_updated.result.value), xsd:dateTime]
+
+  date_updated-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: date_updated-TM
+    po:
+      - [sd:confidence, $(date_updated.confidence)]
+      - [sd:technique, $(date_updated.technique)]
+      - [sd:source, $(date_updated.source)]
+
+  documentation-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasDocumentation, $(documentation.result.value), xsd:anyURI]
+
+  documentation-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: documentation-TM
+    po:
+      - [sd:confidence, $(documentation.confidence)]
+      - [sd:technique, $(documentation.technique)]
+      - [sd:source, $(documentation.source)]
+
+  has_build_file-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasBuildFile, $(has_build_file.result.value), xsd:anyURI]
+
+  has_build_file-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: has_build_file-TM
+    po:
+      - [sd:confidence, $(has_build_file.confidence)]
+      - [sd:technique, $(has_build_file.technique)]
+      - [sd:source, $(has_build_file.source)]
+
+  identifier-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:identifier, $(identifier.result.value), xsd:anyURI]
+
+  identifier-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: identifier-TM
+    po:
+      - [sd:confidence, $(identifier.confidence)]
+      - [sd:technique, $(identifier.technique)]
+      - [sd:source, $(identifier.source)]
+
+  full_title-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasLongName, $(full_title.result.value)]
+
+  full_title-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: full_title-TM
+    po:
+      - [sd:confidence, $(full_title.confidence)]
+      - [sd:technique, $(full_title.technique)]
+      - [sd:source, $(full_title.source)]
+
+  readme_url-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:readme, $(readme_url.result.value), xsd:anyURI]
+
+  readme_url-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: readme_url-TM
+    po:
+      - [sd:confidence, $(readme_url.confidence)]
+      - [sd:technique, $(readme_url.technique)]
+      - [sd:source, $(readme_url.source)]
+
+  contributing_guidelines2-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:contributionGuidelines, $(contributing_guidelines.result.value)]
+
+  contributing_guidelines2-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: contributing_guidelines-TM
+    po:
+      - [sd:confidence, $(contributing_guidelines.confidence)]
+      - [sd:technique, $(contributing_guidelines.technique)]
+      - [sd:source, $(contributing_guidelines.source)]
+
+  executable_example-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasExample, $(executable_example.result.value), xsd:anyURI]
+
+  executable_example-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: executable_example-TM
+    po:
+      - [sd:confidence, $(executable_example.confidence)]
+      - [sd:technique, $(executable_example.technique)]
+      - [sd:source, $(executable_example.source)]
+
+  has_script_file-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasSupportScriptLocation, $(has_script_file.result.value), xsd:anyURI]
+
+  has_script_file-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: has_script_file-TM
+    po:
+      - [sd:confidence, $(has_script_file.confidence)]
+      - [sd:technique, $(has_script_file.technique)]
+      - [sd:source, $(has_script_file.source)]
+
+  invocation2-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasExecutableInstructions, $(invocation.result.value)]
+
+  invocation2-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: invocation-TM
+    po:
+      - [sd:confidence, $(invocation.confidence)]
+      - [sd:technique, $(invocation.technique)]
+      - [sd:source, $(invocation.source)]
+
+  run-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasExecutableInstructions, $(run.result.value)]
+
+  run-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: run-TM
+    po:
+      - [sd:confidence, $(run.confidence)]
+      - [sd:technique, $(run.technique)]
+      - [sd:source, $(run.source)]
+
+  referencePublication-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:referencePublication, $(citation.result.value), xsd:anyURI]
+
+  referencePublication-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: referencePublication-TM
+    po:
+      - [sd:confidence, $(citation.confidence)]
+      - [sd:technique, $(citation.technique)]
+      - [sd:source, $(citation.source)]
+
+  license-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [schema:license, https://w3id.org/okn/i/License/$(license.result.spdx_id)~iri]
+
+  license-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: license-TM
+    po:
+      - [sd:confidence, $(license.confidence)]
+      - [sd:technique, $(license.technique)]
+      - [sd:source, $(license.source)]
+
+  sourceCode-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasSourceCode, https://w3id.org/okn/i/SoftwareSource/$(name.result.value)~iri]
+
+  sourceCode-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: sourceCode-TM
+    po:
+      - [sd:confidence, $(name.confidence)]
+      - [sd:technique, $(name.technique)]
+      - [sd:source, $(name.source)]
+
+  author-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:author, https://w3id.org/okn/i/Agent/$(owner.result.value)~iri]
+
+  author-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: author-TM
+    po:
+      - [sd:confidence, $(owner.confidence)]
+      - [sd:technique, $(owner.technique)]
+      - [sd:source, $(owner.source)]
+
+  releases-TM:
+    sources: main-source
+    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
+    po:
+     - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.release_id)~iri]
+
+  releases-MetaTM:
+    sources: main-source
+    subjects:
+      quoted: releases-TM
+    po:
+      - [sd:confidence, $(releases.confidence)]
+      - [sd:technique, $(releases.technique)]
+      - [sd:source, $(releases.source)]

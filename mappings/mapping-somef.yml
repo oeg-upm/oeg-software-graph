@@ -1,0 +1,104 @@
+prefixes:
+  sd: "https://w3id.org/okn/o/sd#"
+  schema: "https://schema.org/"
+  owl: "http://www.w3.org/2002/07/owl#"
+
+sources:
+  main-source: ['../data/out.json~jsonpath', '$']
+  rel-source: ['../data/out.json~jsonpath', '$.releases[*]']
+
+mappings:
+  License:
+    sources:
+      - main-source
+    s: https://w3id.org/okn/i/License/$(name.result.spdx_id)
+    po:
+      - [a, schema:CreativeWork]
+      - [sd:name, $(license.result.name)]
+      - [sd:url, $(license.result.url), xsd:anyURI]
+      - [owl:sameAs, https://spdx.org/licenses/$(license.result.spdx_id)~iri]
+
+  SourceCode:
+    sources:
+      - main-source
+    s: https://w3id.org/okn/i/SoftwareSource/$(name.result.value)
+    po:
+      - [a, schema:SoftwareSourceCode]
+      - [sd:name, $(full_name.result.value)]
+      - [sd:codeRepository, $(code_repository.result.value), xsd:anyURI]
+      - [sd:programmingLanguage, $(programming_languages.result.value)]
+
+  Agent:
+    sources:
+      - main-source
+    s: https://w3id.org/okn/i/Agent/$(owner.result.value)
+    po:
+      - [a, schema:$(owner.result.type)]
+      - [schema:name, $(owner.result.value)]
+
+  Agent_release:
+    sources:
+      - rel-source
+    s: https://w3id.org/okn/i/Agent/$(author.name)
+    po:
+      - [a, schema:Person]
+      - [schema:name, $(author.name)]
+
+  SoftwareVersion:
+    sources:
+      - rel-source
+    s: https://w3id.org/okn/i/Release/$(release_id)
+    po:
+      - [a, sd:SoftwareVersion]
+      - [sd:name, $(name)]
+      - [sd:hasVersionId, $(tag)]
+      - [sd:url, $(value), xsd:anyURI]
+      - [sd:description, $(description)]
+      - [sd:downloadUrl, $(tarball_url), xsd:anyURI]
+      - [sd:downloadUrl, $(zipball_url), xsd:anyURI]
+      - [sd:downloadUrl, $(html_url), xsd:anyURI]
+      - [sd:dateCreated, $(date_created), xsd:dateTime]
+      - [sd:datePublished, $(date_published), xsd:dateTime]
+      - [sd:author, https://w3id.org/okn/i/Agent/$(author.name)~iri]
+
+  Software:
+    sources:
+      - main-source
+
+    s: https://w3id.org/okn/i/Software/$(name)
+    po:
+      - [a, sd:Software]
+      - [sd:description, $(description.result.value)]
+      - [sd:name, $(full_name.result.value)]
+      - [sd:citation, $(citation.result.value), xsd:anyURI]
+      - [sd:issueTracker, $(issue_tracker.result.value), xsd:anyURI]
+      - [sd:hasAcknowledgments, $(acknowledgement.result.value)]
+      - [sd:hasInstallationInstructions, $(installation.result.value)]
+      - [sd:hasExecutionCommand, $(invocation.result.value)]
+      - [sd:hasUsageNotes, $(usage.result.value)]
+      - [sd:hasDownloadUrl, $(download_url.result.value), xsd:anyURI]
+      - [sd:softwareRequirements, $(requirements.result.value)]
+      - [sd:contactDetails, $(contact.result.value)]
+      - [sd:contributionInstructions, $(contributing_guidelines.result.value), xsd:anyURI]
+      - [sd:supportDetails, $(support.result.value)]
+      - [sd:keywords, $(keywords.result.value)]
+      - [sd:hasFAQ, $(faq.result.value)]
+      - [sd:hasExecutableNotebook, $(executable_example.result.value)]
+      - [sd:hasCodeOfConduct, $(code_of_conduct.result.value)]
+      - [sd:dateCreated, $(date_created.result.value), xsd:dateTime]
+      - [sd:dateModified, $(date_updated.result.value), xsd:dateTime]
+      - [sd:hasDocumentation, $(documentation.result.value), xsd:anyURI]
+      - [sd:hasBuildFile, $(has_build_file.result.value), xsd:anyURI]
+      - [sd:identifier, $(identifier.result.value), xsd:anyURI]
+      - [sd:hasLongName, $(full_title.result.value)]
+      - [sd:readme, $(readme_url.result.value), xsd:anyURI]
+      - [sd:contributingGuidelines, $(contributing_guidelines.result.value)]
+      - [sd:hasExample, $(executable_example.result.value), xsd:anyURI]
+      - [sd:hasSupportScriptLocation, $(has_script_file.result.value), xsd:anyURI]
+      - [sd:hasExecutableInstructions, $(invocation.result.value)]
+      - [sd:hasExecutableInstructions, $(run.result.value)]
+      - [sd:referencePublication, $(citation.result.value), xsd:anyURI]
+      - [schema:license, https://w3id.org/okn/i/License/$(license.result.spdx_id)~iri]
+      - [sd:hasSourceCode, https://w3id.org/okn/i/SoftwareSource/$(name.result.value)~iri]
+      - [sd:author, https://w3id.org/okn/i/Agent/$(owner..result.value)~iri]
+      - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.release_id)~iri]
