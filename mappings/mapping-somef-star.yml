@@ -5,8 +5,8 @@ prefixes:
 
 
 sources:
-  main-source: ['../data/out.json~jsonpath', '$']
-  rel-source: ['../data/out.json~jsonpath', '$.releases[*]']
+  main-source: ['../data/somef.json~jsonpath', '$[*]']
+  rel-source: ['../data/somef.json~jsonpath', '$.releases[*]']
 
 
 mappings:
