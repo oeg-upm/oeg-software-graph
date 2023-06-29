@@ -11,7 +11,7 @@ mappings:
   License:
     sources:
       - main-source
-    s: https://w3id.org/okn/i/License/$(name.result.spdx_id)
+    s: https://w3id.org/okn/i/License/$(name.result.value)
     po:
       - [a, schema:CreativeWork]
       - [sd:name, $(license.result.name)]
@@ -74,12 +74,10 @@ mappings:
       - [sd:issueTracker, $(issue_tracker.result.value), xsd:anyURI]
       - [sd:hasAcknowledgments, $(acknowledgement.result.value)]
       - [sd:hasInstallationInstructions, $(installation.result.value)]
-      - [sd:hasExecutionCommand, $(invocation.result.value)]
       - [sd:hasUsageNotes, $(usage.result.value)]
       - [sd:hasDownloadUrl, $(download_url.result.value), xsd:anyURI]
       - [sd:softwareRequirements, $(requirements.result.value)]
       - [sd:contactDetails, $(contact.result.value)]
-      - [sd:contributionInstructions, $(contributing_guidelines.result.value), xsd:anyURI]
       - [sd:supportDetails, $(support.result.value)]
       - [sd:keywords, $(keywords.result.value)]
       - [sd:hasFAQ, $(faq.result.value)]
@@ -97,8 +95,7 @@ mappings:
       - [sd:hasSupportScriptLocation, $(has_script_file.result.value), xsd:anyURI]
       - [sd:hasExecutableInstructions, $(invocation.result.value)]
       - [sd:hasExecutableInstructions, $(run.result.value)]
-      - [sd:referencePublication, $(citation.result.value), xsd:anyURI]
-      - [schema:license, https://w3id.org/okn/i/License/$(license.result.spdx_id)~iri]
+      - [schema:license, https://w3id.org/okn/i/License/$(name.result.value)~iri]
       - [sd:hasSourceCode, https://w3id.org/okn/i/SoftwareSource/$(name.result.value)~iri]
-      - [sd:author, https://w3id.org/okn/i/Agent/$(owner..result.value)~iri]
+      - [sd:author, https://w3id.org/okn/i/Agent/$(owner.result.value)~iri]
       - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.release_id)~iri]

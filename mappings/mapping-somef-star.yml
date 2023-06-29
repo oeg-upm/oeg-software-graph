@@ -13,7 +13,7 @@ mappings:
   License:
     sources:
       - main-source
-    s: https://w3id.org/okn/i/License/$(name.result.spdx_id)
+    s: https://w3id.org/okn/i/License/$(name.result.value)
     po:
       - [a, schema:CreativeWork]
       - [sd:name, $(license.result.name)]
@@ -69,6 +69,7 @@ mappings:
     s: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
       - [a, sd:Software]
+      - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.release_id)~iri]
 
   desc-TM:
     sources: main-source
@@ -160,21 +161,6 @@ mappings:
       - [sd:technique, $(installation.technique)]
       - [sd:source, $(installation.source)]
 
-  invocation-TM:
-    sources: main-source
-    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
-    po:
-     - [sd:hasExecutionCommand, $(invocation.result.value)]
-
-  invocation-MetaTM:
-    sources: main-source
-    subjects:
-      quoted: invocation-TM
-    po:
-      - [sd:confidence, $(invocation.confidence)]
-      - [sd:technique, $(invocation.technique)]
-      - [sd:source, $(invocation.source)]
-
   usage-TM:
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
@@ -234,21 +220,6 @@ mappings:
       - [sd:confidence, $(contact.confidence)]
       - [sd:technique, $(contact.technique)]
       - [sd:source, $(contact.source)]
-
-  contributing_guidelines-TM:
-    sources: main-source
-    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
-    po:
-     - [sd:contributionInstructions, $(contributing_guidelines.result.value), xsd:anyURI]
-
-  contributing_guidelines-MetaTM:
-    sources: main-source
-    subjects:
-      quoted: contributing_guidelines-TM
-    po:
-      - [sd:confidence, $(contributing_guidelines.confidence)]
-      - [sd:technique, $(contributing_guidelines.technique)]
-      - [sd:source, $(contributing_guidelines.source)]
 
   support-TM:
     sources: main-source
@@ -430,13 +401,13 @@ mappings:
       - [sd:technique, $(readme_url.technique)]
       - [sd:source, $(readme_url.source)]
 
-  contributing_guidelines2-TM:
+  contributing_guidelines-TM:
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:contributionGuidelines, $(contributing_guidelines.result.value)]
 
-  contributing_guidelines2-MetaTM:
+  contributing_guidelines-MetaTM:
     sources: main-source
     subjects:
       quoted: contributing_guidelines-TM
@@ -475,13 +446,13 @@ mappings:
       - [sd:technique, $(has_script_file.technique)]
       - [sd:source, $(has_script_file.source)]
 
-  invocation2-TM:
+  invocation-TM:
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasExecutableInstructions, $(invocation.result.value)]
 
-  invocation2-MetaTM:
+  invocation-MetaTM:
     sources: main-source
     subjects:
       quoted: invocation-TM
@@ -504,21 +475,6 @@ mappings:
       - [sd:confidence, $(run.confidence)]
       - [sd:technique, $(run.technique)]
       - [sd:source, $(run.source)]
-
-  referencePublication-TM:
-    sources: main-source
-    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
-    po:
-     - [sd:referencePublication, $(citation.result.value), xsd:anyURI]
-
-  referencePublication-MetaTM:
-    sources: main-source
-    subjects:
-      quoted: referencePublication-TM
-    po:
-      - [sd:confidence, $(citation.confidence)]
-      - [sd:technique, $(citation.technique)]
-      - [sd:source, $(citation.source)]
 
   license-TM:
     sources: main-source
@@ -564,18 +520,3 @@ mappings:
       - [sd:confidence, $(owner.confidence)]
       - [sd:technique, $(owner.technique)]
       - [sd:source, $(owner.source)]
-
-  releases-TM:
-    sources: main-source
-    subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
-    po:
-     - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.release_id)~iri]
-
-  releases-MetaTM:
-    sources: main-source
-    subjects:
-      quoted: releases-TM
-    po:
-      - [sd:confidence, $(releases.confidence)]
-      - [sd:technique, $(releases.technique)]
-      - [sd:source, $(releases.source)]
