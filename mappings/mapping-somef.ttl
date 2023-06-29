@@ -28,7 +28,7 @@
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
-		rr:template "https://w3id.org/okn/i/License/{name.result.spdx_id}";
+		rr:template "https://w3id.org/okn/i/License/{name.result.value}";
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -415,16 +415,6 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [
 			a rr:PredicateMap;
-			rr:constant sd:hasExecutionCommand;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "invocation.result.value";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
 			rr:constant sd:hasUsageNotes;
 		];
 		rr:objectMap [
@@ -461,17 +451,6 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "contact.result.value";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:contributionInstructions;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "contributing_guidelines.result.value";
-			rr:datatype xsd:anyURI
 		];
 	];
 	rr:predicateObjectMap [
@@ -655,22 +634,11 @@
 	rr:predicateObjectMap [
 		rr:predicateMap [
 			a rr:PredicateMap;
-			rr:constant sd:referencePublication;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "citation.result.value";
-			rr:datatype xsd:anyURI
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
 			rr:constant schema:license;
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rr:template "https://w3id.org/okn/i/License/{license.result.spdx_id}";
+			rr:template "https://w3id.org/okn/i/License/{name.result.value}";
 			rr:termType rr:IRI
 		];
 	];
@@ -692,7 +660,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rr:template "https://w3id.org/okn/i/Agent/{owner..result.value}";
+			rr:template "https://w3id.org/okn/i/Agent/{owner.result.value}";
 			rr:termType rr:IRI
 		];
 	];

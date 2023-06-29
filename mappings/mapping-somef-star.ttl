@@ -28,7 +28,7 @@
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
-		rr:template "https://w3id.org/okn/i/License/{name.result.spdx_id}";
+		rr:template "https://w3id.org/okn/i/License/{name.result.value}";
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -348,6 +348,17 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rr:constant sd:Software;
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant sd:hasVersion;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:template "https://w3id.org/okn/i/Release/{releases.release_id}";
+			rr:termType rr:IRI
 		];
 	].
 
@@ -762,74 +773,6 @@
 	].
 
 
-<invocation-TM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rr:subjectMap [
-		a rr:SubjectMap;
-		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:hasExecutionCommand;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "invocation.result.value";
-		];
-	].
-
-
-<invocation-MetaTM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rml:subjectMap [
-		a rml:StarMap;
-		rml:quotedTriplesMap <invocation-TM_0>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:confidence;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "invocation.confidence";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:technique;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "invocation.technique";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:source;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "invocation.source";
-		];
-	].
-
-
 <usage-TM_0> a rr:TriplesMap;
 
 	rml:logicalSource [
@@ -1099,75 +1042,6 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "contact.source";
-		];
-	].
-
-
-<contributing_guidelines-TM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rr:subjectMap [
-		a rr:SubjectMap;
-		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:contributionInstructions;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "contributing_guidelines.result.value";
-			rr:datatype xsd:anyURI
-		];
-	].
-
-
-<contributing_guidelines-MetaTM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rml:subjectMap [
-		a rml:StarMap;
-		rml:quotedTriplesMap <contributing_guidelines-TM_0>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:confidence;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "contributing_guidelines.confidence";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:technique;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "contributing_guidelines.technique";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:source;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "contributing_guidelines.source";
 		];
 	].
 
@@ -1994,7 +1868,7 @@
 	].
 
 
-<contributing_guidelines2-TM_0> a rr:TriplesMap;
+<contributing_guidelines-TM_0> a rr:TriplesMap;
 
 	rml:logicalSource [
 		a rml:LogicalSource;
@@ -2018,7 +1892,7 @@
 	].
 
 
-<contributing_guidelines2-MetaTM_0> a rr:TriplesMap;
+<contributing_guidelines-MetaTM_0> a rr:TriplesMap;
 
 	rml:logicalSource [
 		a rml:LogicalSource;
@@ -2200,7 +2074,7 @@
 	].
 
 
-<invocation2-TM_0> a rr:TriplesMap;
+<invocation-TM_0> a rr:TriplesMap;
 
 	rml:logicalSource [
 		a rml:LogicalSource;
@@ -2224,7 +2098,7 @@
 	].
 
 
-<invocation2-MetaTM_0> a rr:TriplesMap;
+<invocation-MetaTM_0> a rr:TriplesMap;
 
 	rml:logicalSource [
 		a rml:LogicalSource;
@@ -2332,75 +2206,6 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "run.source";
-		];
-	].
-
-
-<referencePublication-TM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rr:subjectMap [
-		a rr:SubjectMap;
-		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:referencePublication;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "citation.result.value";
-			rr:datatype xsd:anyURI
-		];
-	].
-
-
-<referencePublication-MetaTM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rml:subjectMap [
-		a rml:StarMap;
-		rml:quotedTriplesMap <referencePublication-TM_0>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:confidence;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "citation.confidence";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:technique;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "citation.technique";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:source;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "citation.source";
 		];
 	].
 
@@ -2608,75 +2413,6 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "owner.source";
-		];
-	].
-
-
-<releases-TM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rr:subjectMap [
-		a rr:SubjectMap;
-		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:hasVersion;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rr:template "https://w3id.org/okn/i/Release/{releases.release_id}";
-			rr:termType rr:IRI
-		];
-	].
-
-
-<releases-MetaTM_0> a rr:TriplesMap;
-
-	rml:logicalSource [
-		a rml:LogicalSource;
-		rml:source "../data/out.json";
-		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$";
-	];
-	rml:subjectMap [
-		a rml:StarMap;
-		rml:quotedTriplesMap <releases-TM_0>;
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:confidence;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "releases.confidence";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:technique;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "releases.technique";
-		];
-	];
-	rr:predicateObjectMap [
-		rr:predicateMap [
-			a rr:PredicateMap;
-			rr:constant sd:source;
-		];
-		rr:objectMap [
-			a rr:ObjectMap;
-			rml:reference "releases.source";
 		];
 	].
 
