@@ -1,6 +1,8 @@
 @prefix sd: <https://w3id.org/okn/o/sd#>.
 @prefix schema: <https://schema.org/>.
 @prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix dc: <http://purl.org/dc/terms/>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
 @prefix rr: <http://www.w3.org/ns/r2rml#>.
 @prefix rml: <http://semweb.mmlab.be/ns/rml#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
@@ -18,6 +20,41 @@
 @base <http://example.com/ns#>.
 
 
+<Graph-prov_0> a rr:TriplesMap;
+
+	rml:logicalSource [
+		a rml:LogicalSource;
+		rml:source "../data/somef.json";
+		rml:referenceFormulation ql:JSONPath;
+		rml:iterator "$[*]";
+	];
+	rr:subjectMap [
+		a rr:SubjectMap;
+		rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant dc:created;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rml:reference "somef_provenance.date";
+		];
+	];
+	rr:predicateObjectMap [
+		rr:predicateMap [
+			a rr:PredicateMap;
+			rr:constant prov:wasAttributedTo;
+		];
+		rr:objectMap [
+			a rr:ObjectMap;
+			rr:constant "SOftware Metadata Extraction Framework (SOMEF)";
+			rr:language "en"
+		];
+	].
+
+
 <License_0> a rr:TriplesMap;
 
 	rml:logicalSource [
@@ -29,6 +66,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://w3id.org/okn/i/License/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -85,6 +126,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://w3id.org/okn/i/SoftwareSource/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -140,6 +185,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://w3id.org/okn/i/Agent/{owner.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -169,11 +218,15 @@
 		a rml:LogicalSource;
 		rml:source "../data/somef.json";
 		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$[*].releases[*]";
+		rml:iterator "$.releases[*]";
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://w3id.org/okn/i/Agent/{author.name}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -203,11 +256,15 @@
 		a rml:LogicalSource;
 		rml:source "../data/somef.json";
 		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$[*].releases[*]";
+		rml:iterator "$.releases[*]";
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://w3id.org/okn/i/Release/{release_id}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -339,6 +396,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -374,6 +435,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -398,6 +463,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <desc-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -442,6 +511,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -466,6 +539,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <full_name-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -510,6 +587,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -535,6 +616,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <citation-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -579,6 +664,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -604,6 +693,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <issue_tracker-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -648,6 +741,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -672,6 +769,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <acknowledgement-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -716,6 +817,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -740,6 +845,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <installation-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -784,6 +893,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -808,6 +921,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <usage-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -852,6 +969,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -877,6 +998,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <download_url-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -921,6 +1046,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -945,6 +1074,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <requirements-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -989,6 +1122,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1013,6 +1150,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <contact-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1057,6 +1198,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1081,6 +1226,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <support-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1125,6 +1274,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1149,6 +1302,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <keywords-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1193,6 +1350,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1217,6 +1378,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <faq-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1261,6 +1426,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1285,6 +1454,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <executable_example-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1329,6 +1502,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1353,6 +1530,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <code_of_conduct-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1397,6 +1578,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1422,6 +1607,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <dateCreated-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1466,6 +1655,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1491,6 +1684,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <date_updated-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1535,6 +1732,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1560,6 +1761,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <documentation-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1604,6 +1809,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1629,6 +1838,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <has_build_file-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1673,6 +1886,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1698,6 +1915,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <identifier-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1742,6 +1963,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1766,6 +1991,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <full_title-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1810,6 +2039,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1835,6 +2068,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <readme_url-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1879,6 +2116,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1903,6 +2144,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <contributing_guidelines-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1947,6 +2192,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -1972,6 +2221,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <executable_example-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2016,6 +2269,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2041,6 +2298,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <has_script_file-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2085,6 +2346,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2109,6 +2374,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <invocation-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2153,6 +2422,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2177,6 +2450,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <run-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2221,6 +2498,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2246,6 +2527,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <license-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2290,6 +2575,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2315,6 +2604,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <sourceCode-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2359,6 +2652,10 @@
 	rr:subjectMap [
 		a rr:SubjectMap;
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2384,6 +2681,10 @@
 	rml:subjectMap [
 		a rml:StarMap;
 		rml:quotedTriplesMap <author-TM_0>;
+		rr:graphMap [
+			a rr:GraphMap;
+			rr:template "https://w3id.org/okn/i/graph-{somef_provenance.date}";
+		];
 	];
 	rr:predicateObjectMap [
 		rr:predicateMap [
@@ -2415,3 +2716,5 @@
 			rml:reference "owner.source";
 		];
 	].
+
+
