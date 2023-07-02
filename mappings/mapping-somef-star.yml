@@ -10,15 +10,6 @@ sources:
   main-source: ['../data/somef.json~jsonpath', '$[*]']
   rel-source: ['../data/somef.json~jsonpath', '$.releases[*]']
 
-mappings:
-  Graph-prov:
-    sources:
-      - main-source
-    s: https://w3id.org/okn/i/graph-$(somef_provenance.date)
-    po:
-      - [dc:created, $(somef_provenance.date)]
-      - [prov:wasAttributedTo, 'SOftware Metadata Extraction Framework (SOMEF)', en~lang]
-
   License:
     graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
     sources:
