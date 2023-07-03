@@ -183,11 +183,11 @@
 		a rml:LogicalSource;
 		rml:source "../data/somef.json";
 		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$.releases[*]";
+		rml:iterator "$[*]";
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
-		rr:template "https://w3id.org/okn/i/Agent/{author.name}";
+		rr:template "https://w3id.org/okn/i/Agent/{releases.author.name}";
 		rr:graphMap [
 			a rr:GraphMap;
 			rr:template "https://w3id.org/okn/i/graph/20230628";
@@ -210,7 +210,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "author.name";
+			rml:reference "releases.author.name";
 		];
 	].
 
@@ -221,11 +221,11 @@
 		a rml:LogicalSource;
 		rml:source "../data/somef.json";
 		rml:referenceFormulation ql:JSONPath;
-		rml:iterator "$.releases[*]";
+		rml:iterator "$[*]";
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
-		rr:template "https://w3id.org/okn/i/Release/{result.name}";
+		rr:template "https://w3id.org/okn/i/Release/{releases.result.release_id}";
 		rr:graphMap [
 			a rr:GraphMap;
 			rr:template "https://w3id.org/okn/i/graph/20230628";
@@ -248,7 +248,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.name";
+			rml:reference "releases.result.name";
 		];
 	];
 	rr:predicateObjectMap [
@@ -258,7 +258,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.tag";
+			rml:reference "releases.result.tag";
 		];
 	];
 	rr:predicateObjectMap [
@@ -268,7 +268,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.value";
+			rml:reference "releases.result.value";
 			rr:datatype xsd:anyURI
 		];
 	];
@@ -279,7 +279,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.description";
+			rml:reference "releases.result.description";
 		];
 	];
 	rr:predicateObjectMap [
@@ -289,7 +289,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.tarball_url";
+			rml:reference "releases.result.tarball_url";
 			rr:datatype xsd:anyURI
 		];
 	];
@@ -300,7 +300,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.zipball_url";
+			rml:reference "releases.result.zipball_url";
 			rr:datatype xsd:anyURI
 		];
 	];
@@ -311,7 +311,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.html_url";
+			rml:reference "releases.result.html_url";
 			rr:datatype xsd:anyURI
 		];
 	];
@@ -322,7 +322,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.date_created";
+			rml:reference "releases.result.date_created";
 			rr:datatype xsd:dateTime
 		];
 	];
@@ -333,7 +333,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "result.date_published";
+			rml:reference "releases.result.date_published";
 			rr:datatype xsd:dateTime
 		];
 	];
@@ -344,7 +344,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rr:template "https://w3id.org/okn/i/Agent/{result.author.name}";
+			rr:template "https://w3id.org/okn/i/Agent/{releases.result.author.name}";
 			rr:termType rr:IRI
 		];
 	].
@@ -383,7 +383,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rr:template "https://w3id.org/okn/i/Release/{releases.result.name}";
+			rr:template "https://w3id.org/okn/i/Release/{releases.result.release_id}";
 			rr:termType rr:IRI
 		];
 	].
