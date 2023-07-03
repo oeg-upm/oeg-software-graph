@@ -2475,7 +2475,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rr:template "https://w3id.org/okn/i/License/{license.result.spdx_id}";
+			rr:template "https://w3id.org/okn/i/License/{name.result.value}";
 			rr:termType rr:IRI
 		];
 	].
