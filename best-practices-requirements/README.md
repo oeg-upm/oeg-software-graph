@@ -4,17 +4,18 @@ Based on available guidelines for FAIR research software ([1],[2]), these querie
 
 1. Description: Are there any descriptions in the repository? Are they short descriptions or longer descriptions included in the readme?
 2. Registry/ Unique identifier: Is the software component archived in Zenodo? Does it have a Digital Object Identifier?
-3. Are there available releases to download the repository? Is there any versioning scheme followed?
-4. Is there any documentation available, such as installation or run instructions?
-5. Does the repository have a license?
-6. Does the repository indicate how to cite its contents? 
-7. Does the repository include basec metadata including name, creation date, keywords, etc?
-8. Are there any requirements specified anywhere?
-9. Is metadata available in a machine-readable format? (this is achieved by our approach by default, printing all available metadata)
+3. Are there available releases to download the repository?
+4. Is there any versioning scheme followed?
+5. Is there any documentation available, such as installation or run instructions?
+6. Does the repository have a license?
+7. Does the repository indicate how to cite its contents? 
+8. Does the repository include basec metadata including programming language, description, creation date, keywords and releases?
+9. Does the repository provide installation instructions?
+10. Are there any requirements specified anywhere?
 
 ## Additional queries:
-10. When was the metadata from a repository extracted last?
-11. Which is the method most commonly used for citation? A CFF file, a CITATION file or some notes in the readme file?
+11. When was the metadata from a repository extracted last?
+12. Which is the method most commonly used for citation? A CFF file, a CITATION file or some notes in the readme file?
 
 
 ## References:
