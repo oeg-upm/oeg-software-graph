@@ -1,5 +1,5 @@
 # oeg-software-graph
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 
 ## Description
 
@@ -15,6 +15,27 @@ This repository is organized as follows:
 * `notebooks/` contains two notebooks, for i) the generation of the JSON files and ii) construction and querying of the knowledge graph
 * `best-practices-requirements/` describes the set of representative best practices that are assessed in the repositories represented in the knowledge graph
 
+## Installation
+This pipeline has been tested in `Python 3.9`.
+
+In order to run the pipeline, you need to install [Jupyter Notebooks](https://jupyter.org/install):
+
+```
+pip install notebook
+```
+
+Then, install the requirements of the project. Creating an environment is highly recommended: 
+
+```
+pip install -e requirements.txt
+```
+
+Finally, start Jupyter notebook and run the notebooks in the `notebooks` folder. 
+
+### Requirements: 
+
+Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `oxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file.
+
 ## Authors
 * [Ana Iglesias-Molina](https://github.com/anaigmo) ([ana.iglesiasm@upm.es](mailto:ana.iglesiasm@upm.es))
-* [Daniel Garijo](https://github.com/dgarijo) ([dgarijo@fi.upm.es](mailto:dgarijo@fi.upm.es))
+* [Daniel Garijo](https://github.com/dgarijo) ([daniel.garijo@upm.es](mailto:daniel.garijo@upm.es))
