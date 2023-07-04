@@ -36,6 +36,24 @@ Finally, start Jupyter notebook and run the notebooks in the `notebooks` folder.
 
 Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `pyoxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file.
 
+## Citation
+If you use this work, please cite our software as follows:
+
+```bibtex
+@software{ana_iglesias_2023_8114677,
+  author       = {Ana Iglesias and
+                  Daniel Garijo},
+  title        = {oeg-upm/oeg-software-graph: v1.0.0},
+  month        = jul,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.8114677},
+  url          = {https://doi.org/10.5281/zenodo.8114677}
+}
+```
+
+
 ## Authors
 * [Ana Iglesias-Molina](https://github.com/anaigmo) ([ana.iglesiasm@upm.es](mailto:ana.iglesiasm@upm.es))
 * [Daniel Garijo](https://github.com/dgarijo) ([daniel.garijo@upm.es](mailto:daniel.garijo@upm.es))

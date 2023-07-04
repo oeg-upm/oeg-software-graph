@@ -1,0 +1,13 @@
+cff-version: 1.2.1
+message: "If you use this software, please cite it as below."
+title: "OEG Software Graph"
+license: Apache-2.0
+authors:
+  - family-names: Garijo
+    given-names: Daniel
+    orcid: "http://orcid.org/0000-0003-0454-7145"
+  - family-names: Iglesias-Molina
+    given-names: Ana
+    orcid: "https://orcid.org/0000-0001-5375-8024"
+doi: 10.5281/zenodo.8114677
+version: 1.0.0
