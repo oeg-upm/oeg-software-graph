@@ -8,10 +8,10 @@ prefixes:
 
 sources:
   main-source: ['../data/somef.json~jsonpath', '$[*]']
-  rel-source: ['../data/somef.json~jsonpath', '$.releases[*]']
 
+mappings:
   License:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources:
       - main-source
     s: https://w3id.org/okn/i/License/$(name.result.value)
@@ -22,7 +22,7 @@ sources:
       - [owl:sameAs, https://spdx.org/licenses/$(license.result.spdx_id)~iri]
 
   SourceCode:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources:
       - main-source
     s: https://w3id.org/okn/i/SoftwareSource/$(name.result.value)
@@ -33,7 +33,7 @@ sources:
       - [sd:programmingLanguage, $(programming_languages.result.value)]
 
   Agent:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources:
       - main-source
     s: https://w3id.org/okn/i/Agent/$(owner.result.value)
@@ -42,547 +42,547 @@ sources:
       - [schema:name, $(owner.result.value)]
 
   Agent_release:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources:
-      - rel-source
-    s: https://w3id.org/okn/i/Agent/$(author.name)
+      - main-source
+    s: https://w3id.org/okn/i/Agent/$(releases.result.author.name)
     po:
       - [a, schema:Person]
-      - [schema:name, $(author.name)]
+      - [schema:name, $(releases.result.author.name)]
 
   SoftwareVersion:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources:
-      - rel-source
-    s: https://w3id.org/okn/i/Release/$(release_id)
+      - main-source
+    s: https://w3id.org/okn/i/Release/$(releases.result.release_id)
     po:
       - [a, sd:SoftwareVersion]
-      - [sd:name, $(name)]
-      - [sd:hasVersionId, $(tag)]
-      - [sd:url, $(value), xsd:anyURI]
-      - [sd:description, $(description)]
-      - [sd:downloadUrl, $(tarball_url), xsd:anyURI]
-      - [sd:downloadUrl, $(zipball_url), xsd:anyURI]
-      - [sd:downloadUrl, $(html_url), xsd:anyURI]
-      - [sd:dateCreated, $(date_created), xsd:dateTime]
-      - [sd:datePublished, $(date_published), xsd:dateTime]
-      - [sd:author, https://w3id.org/okn/i/Agent/$(author.name)~iri]
+      - [sd:name, $(releases.result.name)]
+      - [sd:hasVersionId, $(releases.result.tag)]
+      - [sd:url, $(releases.result.value), xsd:anyURI]
+      - [sd:description, $(releases.result.description)]
+      - [sd:downloadUrl, $(releases.result.tarball_url), xsd:anyURI]
+      - [sd:downloadUrl, $(releases.result.zipball_url), xsd:anyURI]
+      - [sd:downloadUrl, $(releases.result.html_url), xsd:anyURI]
+      - [sd:dateCreated, $(releases.result.date_created), xsd:dateTime]
+      - [sd:datePublished, $(releases.result.date_published), xsd:dateTime]
+      - [sd:author, https://w3id.org/okn/i/Agent/$(releases.result.author.name)~iri]
 
   subjectSoftware:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources:
       - main-source
     s: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
       - [a, sd:Software]
-      - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.release_id)~iri]
+      - [sd:hasVersion, https://w3id.org/okn/i/Release/$(releases.result.release_id)~iri]
 
   desc-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:description, $(description.result.value)]
 
   desc-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: desc-TM
     po:
-      - [sd:confidence, $(description.confidence)]
+      - [sd:confidence, $(description.confidence), xsd:float]
       - [sd:technique, $(description.technique)]
-      - [sd:source, $(description.source)]
+      - [prov:hadPrimarySource, $(description.source)]
 
   full_name-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:name, $(full_name.result.value)]
 
   full_name-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: full_name-TM
     po:
-      - [sd:confidence, $(full_name.confidence)]
+      - [sd:confidence, $(full_name.confidence), xsd:float]
       - [sd:technique, $(full_name.technique)]
-      - [sd:source, $(full_name.source)]
+      - [prov:hadPrimarySource, $(full_name.source)]
 
   citation-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:citation, $(citation.result.value), xsd:anyURI]
 
   citation-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: citation-TM
     po:
-      - [sd:confidence, $(citation.confidence)]
+      - [sd:confidence, $(citation.confidence), xsd:float]
       - [sd:technique, $(citation.technique)]
-      - [sd:source, $(citation.source)]
+      - [prov:hadPrimarySource, $(citation.source)]
 
   issue_tracker-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:issueTracker, $(issue_tracker.result.value), xsd:anyURI]
 
   issue_tracker-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: issue_tracker-TM
     po:
-      - [sd:confidence, $(issue_tracker.confidence)]
+      - [sd:confidence, $(issue_tracker.confidence), xsd:float]
       - [sd:technique, $(issue_tracker.technique)]
-      - [sd:source, $(issue_tracker.source)]
+      - [prov:hadPrimarySource, $(issue_tracker.source)]
 
   acknowledgement-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasAcknowledgements, $(acknowledgement.result.value)]
 
   acknowledgement-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: acknowledgement-TM
     po:
-      - [sd:confidence, $(acknowledgement.confidence)]
+      - [sd:confidence, $(acknowledgement.confidence), xsd:float]
       - [sd:technique, $(acknowledgement.technique)]
-      - [sd:source, $(acknowledgement.source)]
+      - [prov:hadPrimarySource, $(acknowledgement.source)]
 
   installation-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasInstallationInstructions, $(installation.result.value)]
 
   installation-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: installation-TM
     po:
-      - [sd:confidence, $(installation.confidence)]
+      - [sd:confidence, $(installation.confidence), xsd:float]
       - [sd:technique, $(installation.technique)]
-      - [sd:source, $(installation.source)]
+      - [prov:hadPrimarySource, $(installation.source)]
 
   usage-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasUsageNotes, $(usage.result.value)]
 
   usage-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: usage-TM
     po:
-      - [sd:confidence, $(usage.confidence)]
+      - [sd:confidence, $(usage.confidence), xsd:float]
       - [sd:technique, $(usage.technique)]
-      - [sd:source, $(usage.source)]
+      - [prov:hadPrimarySource, $(usage.source)]
 
   download_url-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasDownloadUrl, $(download_url.result.value), xsd:anyURI]
 
   download_url-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: download_url-TM
     po:
-      - [sd:confidence, $(download_url.confidence)]
+      - [sd:confidence, $(download_url.confidence), xsd:float]
       - [sd:technique, $(download_url.technique)]
-      - [sd:source, $(download_url.source)]
+      - [prov:hadPrimarySource, $(download_url.source)]
 
   requirements-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:softwareRequirements, $(requirements.result.value)]
 
   requirements-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: requirements-TM
     po:
-      - [sd:confidence, $(requirements.confidence)]
+      - [sd:confidence, $(requirements.confidence), xsd:float]
       - [sd:technique, $(requirements.technique)]
-      - [sd:source, $(requirements.source)]
+      - [prov:hadPrimarySource, $(requirements.source)]
 
   contact-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:contactDetails, $(contact.result.value)]
 
   contact-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: contact-TM
     po:
-      - [sd:confidence, $(contact.confidence)]
+      - [sd:confidence, $(contact.confidence), xsd:float]
       - [sd:technique, $(contact.technique)]
-      - [sd:source, $(contact.source)]
+      - [prov:hadPrimarySource, $(contact.source)]
 
   support-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:supportDetails, $(support.result.value)]
 
   support-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: support-TM
     po:
-      - [sd:confidence, $(support.confidence)]
+      - [sd:confidence, $(support.confidence), xsd:float]
       - [sd:technique, $(support.technique)]
-      - [sd:source, $(support.source)]
+      - [prov:hadPrimarySource, $(support.source)]
 
   keywords-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:keywords, $(keywords.result.value)]
 
   keywords-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: keywords-TM
     po:
-      - [sd:confidence, $(keywords.confidence)]
+      - [sd:confidence, $(keywords.confidence), xsd:float]
       - [sd:technique, $(keywords.technique)]
-      - [sd:source, $(keywords.source)]
+      - [prov:hadPrimarySource, $(keywords.source)]
 
   faq-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasFAQ, $(faq.result.value)]
 
   faq-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: faq-TM
     po:
-      - [sd:confidence, $(faq.confidence)]
+      - [sd:confidence, $(faq.confidence), xsd:float]
       - [sd:technique, $(faq.technique)]
-      - [sd:source, $(faq.source)]
+      - [prov:hadPrimarySource, $(faq.source)]
 
   executable_example2-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasExecutableNotebook, $(executable_example.result.value)]
 
   executable_example2-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: executable_example-TM
     po:
-      - [sd:confidence, $(executable_example.confidence)]
+      - [sd:confidence, $(executable_example.confidence), xsd:float]
       - [sd:technique, $(executable_example.technique)]
-      - [sd:source, $(executable_example.source)]
+      - [prov:hadPrimarySource, $(executable_example.source)]
 
   code_of_conduct-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasCodeOfConduct, $(code_of_conduct.result.value)]
 
   code_of_conduct-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: code_of_conduct-TM
     po:
-      - [sd:confidence, $(code_of_conduct.confidence)]
+      - [sd:confidence, $(code_of_conduct.confidence), xsd:float]
       - [sd:technique, $(code_of_conduct.technique)]
-      - [sd:source, $(code_of_conduct.source)]
+      - [prov:hadPrimarySource, $(code_of_conduct.source)]
 
   dateCreated-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
-     - [sd:date-created, $(date_created.result.value), xsd:dateTime]
+     - [sd:dateCreated, $(date_created.result.value), xsd:dateTime]
 
   dateCreated-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: dateCreated-TM
     po:
-      - [sd:confidence, $(date_created.confidence)]
+      - [sd:confidence, $(date_created.confidence), xsd:float]
       - [sd:technique, $(date_created.technique)]
-      - [sd:source, $(date_created.source)]
+      - [prov:hadPrimarySource, $(date_created.source)]
 
   date_updated-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:dateModified, $(date_updated.result.value), xsd:dateTime]
 
   date_updated-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: date_updated-TM
     po:
-      - [sd:confidence, $(date_updated.confidence)]
+      - [sd:confidence, $(date_updated.confidence), xsd:float]
       - [sd:technique, $(date_updated.technique)]
-      - [sd:source, $(date_updated.source)]
+      - [prov:hadPrimarySource, $(date_updated.source)]
 
   documentation-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasDocumentation, $(documentation.result.value), xsd:anyURI]
 
   documentation-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: documentation-TM
     po:
-      - [sd:confidence, $(documentation.confidence)]
+      - [sd:confidence, $(documentation.confidence), xsd:float]
       - [sd:technique, $(documentation.technique)]
-      - [sd:source, $(documentation.source)]
+      - [prov:hadPrimarySource, $(documentation.source)]
 
   has_build_file-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasBuildFile, $(has_build_file.result.value), xsd:anyURI]
 
   has_build_file-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: has_build_file-TM
     po:
-      - [sd:confidence, $(has_build_file.confidence)]
+      - [sd:confidence, $(has_build_file.confidence), xsd:float]
       - [sd:technique, $(has_build_file.technique)]
-      - [sd:source, $(has_build_file.source)]
+      - [prov:hadPrimarySource, $(has_build_file.source)]
 
   identifier-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:identifier, $(identifier.result.value), xsd:anyURI]
 
   identifier-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: identifier-TM
     po:
-      - [sd:confidence, $(identifier.confidence)]
+      - [sd:confidence, $(identifier.confidence), xsd:float]
       - [sd:technique, $(identifier.technique)]
-      - [sd:source, $(identifier.source)]
+      - [prov:hadPrimarySource, $(identifier.source)]
 
   full_title-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasLongName, $(full_title.result.value)]
 
   full_title-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: full_title-TM
     po:
-      - [sd:confidence, $(full_title.confidence)]
+      - [sd:confidence, $(full_title.confidence), xsd:float]
       - [sd:technique, $(full_title.technique)]
-      - [sd:source, $(full_title.source)]
+      - [prov:hadPrimarySource, $(full_title.source)]
 
   readme_url-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:readme, $(readme_url.result.value), xsd:anyURI]
 
   readme_url-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: readme_url-TM
     po:
-      - [sd:confidence, $(readme_url.confidence)]
+      - [sd:confidence, $(readme_url.confidence), xsd:float]
       - [sd:technique, $(readme_url.technique)]
-      - [sd:source, $(readme_url.source)]
+      - [prov:hadPrimarySource, $(readme_url.source)]
 
   contributing_guidelines-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:contributionGuidelines, $(contributing_guidelines.result.value)]
 
   contributing_guidelines-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: contributing_guidelines-TM
     po:
-      - [sd:confidence, $(contributing_guidelines.confidence)]
+      - [sd:confidence, $(contributing_guidelines.confidence), xsd:float]
       - [sd:technique, $(contributing_guidelines.technique)]
-      - [sd:source, $(contributing_guidelines.source)]
+      - [prov:hadPrimarySource, $(contributing_guidelines.source)]
 
   executable_example-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasExample, $(executable_example.result.value), xsd:anyURI]
 
   executable_example-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: executable_example-TM
     po:
-      - [sd:confidence, $(executable_example.confidence)]
+      - [sd:confidence, $(executable_example.confidence), xsd:float]
       - [sd:technique, $(executable_example.technique)]
-      - [sd:source, $(executable_example.source)]
+      - [prov:hadPrimarySource, $(executable_example.source)]
 
   has_script_file-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasSupportScriptLocation, $(has_script_file.result.value), xsd:anyURI]
 
   has_script_file-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: has_script_file-TM
     po:
-      - [sd:confidence, $(has_script_file.confidence)]
+      - [sd:confidence, $(has_script_file.confidence), xsd:float]
       - [sd:technique, $(has_script_file.technique)]
-      - [sd:source, $(has_script_file.source)]
+      - [prov:hadPrimarySource, $(has_script_file.source)]
 
   invocation-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasExecutableInstructions, $(invocation.result.value)]
 
   invocation-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: invocation-TM
     po:
-      - [sd:confidence, $(invocation.confidence)]
+      - [sd:confidence, $(invocation.confidence), xsd:float]
       - [sd:technique, $(invocation.technique)]
-      - [sd:source, $(invocation.source)]
+      - [prov:hadPrimarySource, $(invocation.source)]
 
   run-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasExecutableInstructions, $(run.result.value)]
 
   run-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: run-TM
     po:
-      - [sd:confidence, $(run.confidence)]
+      - [sd:confidence, $(run.confidence), xsd:float]
       - [sd:technique, $(run.technique)]
-      - [sd:source, $(run.source)]
+      - [prov:hadPrimarySource, $(run.source)]
 
   license-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
-     - [schema:license, https://w3id.org/okn/i/License/$(license.result.spdx_id)~iri]
+     - [schema:license, https://w3id.org/okn/i/License/$(name.result.value)~iri]
 
   license-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: license-TM
     po:
-      - [sd:confidence, $(license.confidence)]
+      - [sd:confidence, $(license.confidence), xsd:float]
       - [sd:technique, $(license.technique)]
-      - [sd:source, $(license.source)]
+      - [prov:hadPrimarySource, $(license.source)]
 
   sourceCode-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:hasSourceCode, https://w3id.org/okn/i/SoftwareSource/$(name.result.value)~iri]
 
   sourceCode-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: sourceCode-TM
     po:
-      - [sd:confidence, $(name.confidence)]
+      - [sd:confidence, $(name.confidence), xsd:float]
       - [sd:technique, $(name.technique)]
-      - [sd:source, $(name.source)]
+      - [prov:hadPrimarySource, $(name.source)]
 
   author-TM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects: https://www.w3id.org/okn/i/Software/$(owner.result.value)/$(name.result.value)
     po:
      - [sd:author, https://w3id.org/okn/i/Agent/$(owner.result.value)~iri]
 
   author-MetaTM:
-    graphs: https://w3id.org/okn/i/graph-$(somef_provenance.date)
+    graphs: https://w3id.org/okn/i/graph/20230628
     sources: main-source
     subjects:
       quoted: author-TM
     po:
-      - [sd:confidence, $(owner.confidence)]
+      - [sd:confidence, $(owner.confidence), xsd:float]
       - [sd:technique, $(owner.technique)]
-      - [sd:source, $(owner.source)]
+      - [prov:hadPrimarySource, $(owner.source)]

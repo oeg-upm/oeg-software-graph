@@ -33,7 +33,7 @@
 		rr:template "https://w3id.org/okn/i/License/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -93,7 +93,7 @@
 		rr:template "https://w3id.org/okn/i/SoftwareSource/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -152,7 +152,7 @@
 		rr:template "https://w3id.org/okn/i/Agent/{owner.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -187,10 +187,10 @@
 	];
 	rr:subjectMap [
 		a rr:SubjectMap;
-		rr:template "https://w3id.org/okn/i/Agent/{releases.author.name}";
+		rr:template "https://w3id.org/okn/i/Agent/{releases.result.author.name}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -210,7 +210,7 @@
 		];
 		rr:objectMap [
 			a rr:ObjectMap;
-			rml:reference "releases.author.name";
+			rml:reference "releases.result.author.name";
 		];
 	].
 
@@ -228,7 +228,7 @@
 		rr:template "https://w3id.org/okn/i/Release/{releases.result.release_id}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -363,7 +363,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -402,7 +402,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -430,7 +430,7 @@
 		rml:quotedTriplesMap <desc-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -441,6 +441,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "description.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -478,7 +479,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -506,7 +507,7 @@
 		rml:quotedTriplesMap <full_name-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -517,6 +518,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "full_name.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -554,7 +556,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -583,7 +585,7 @@
 		rml:quotedTriplesMap <citation-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -594,6 +596,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "citation.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -631,7 +634,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -660,7 +663,7 @@
 		rml:quotedTriplesMap <issue_tracker-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -671,6 +674,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "issue_tracker.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -708,7 +712,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -736,7 +740,7 @@
 		rml:quotedTriplesMap <acknowledgement-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -747,6 +751,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "acknowledgement.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -784,7 +789,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -812,7 +817,7 @@
 		rml:quotedTriplesMap <installation-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -823,6 +828,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "installation.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -860,7 +866,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -888,7 +894,7 @@
 		rml:quotedTriplesMap <usage-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -899,6 +905,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "usage.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -936,7 +943,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -965,7 +972,7 @@
 		rml:quotedTriplesMap <download_url-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -976,6 +983,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "download_url.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1013,7 +1021,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1041,7 +1049,7 @@
 		rml:quotedTriplesMap <requirements-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1052,6 +1060,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "requirements.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1089,7 +1098,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1117,7 +1126,7 @@
 		rml:quotedTriplesMap <contact-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1128,6 +1137,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "contact.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1165,7 +1175,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1193,7 +1203,7 @@
 		rml:quotedTriplesMap <support-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1204,6 +1214,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "support.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1241,7 +1252,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1269,7 +1280,7 @@
 		rml:quotedTriplesMap <keywords-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1280,6 +1291,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "keywords.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1317,7 +1329,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1345,7 +1357,7 @@
 		rml:quotedTriplesMap <faq-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1356,6 +1368,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "faq.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1393,7 +1406,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1421,7 +1434,7 @@
 		rml:quotedTriplesMap <executable_example-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1432,6 +1445,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "executable_example.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1469,7 +1483,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1497,7 +1511,7 @@
 		rml:quotedTriplesMap <code_of_conduct-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1508,6 +1522,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "code_of_conduct.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1545,7 +1560,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1574,7 +1589,7 @@
 		rml:quotedTriplesMap <dateCreated-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1585,6 +1600,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "date_created.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1622,7 +1638,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1651,7 +1667,7 @@
 		rml:quotedTriplesMap <date_updated-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1662,6 +1678,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "date_updated.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1699,7 +1716,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1728,7 +1745,7 @@
 		rml:quotedTriplesMap <documentation-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1739,6 +1756,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "documentation.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1776,7 +1794,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1805,7 +1823,7 @@
 		rml:quotedTriplesMap <has_build_file-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1816,6 +1834,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "has_build_file.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1853,7 +1872,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1882,7 +1901,7 @@
 		rml:quotedTriplesMap <identifier-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1893,6 +1912,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "identifier.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -1930,7 +1950,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1958,7 +1978,7 @@
 		rml:quotedTriplesMap <full_title-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -1969,6 +1989,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "full_title.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2006,7 +2027,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2035,7 +2056,7 @@
 		rml:quotedTriplesMap <readme_url-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2046,6 +2067,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "readme_url.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2083,7 +2105,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2111,7 +2133,7 @@
 		rml:quotedTriplesMap <contributing_guidelines-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2122,6 +2144,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "contributing_guidelines.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2159,7 +2182,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2188,7 +2211,7 @@
 		rml:quotedTriplesMap <executable_example-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2199,6 +2222,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "executable_example.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2236,7 +2260,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2265,7 +2289,7 @@
 		rml:quotedTriplesMap <has_script_file-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2276,6 +2300,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "has_script_file.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2313,7 +2338,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2341,7 +2366,7 @@
 		rml:quotedTriplesMap <invocation-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2352,6 +2377,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "invocation.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2389,7 +2415,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2417,7 +2443,7 @@
 		rml:quotedTriplesMap <run-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2428,6 +2454,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "run.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2465,7 +2492,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2494,7 +2521,7 @@
 		rml:quotedTriplesMap <license-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2505,6 +2532,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "license.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2542,7 +2570,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2571,7 +2599,7 @@
 		rml:quotedTriplesMap <sourceCode-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2582,6 +2610,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "name.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2619,7 +2648,7 @@
 		rr:template "https://www.w3id.org/okn/i/Software/{owner.result.value}/{name.result.value}";
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2648,7 +2677,7 @@
 		rml:quotedTriplesMap <author-TM_0>;
 		rr:graphMap [
 			a rr:GraphMap;
-			rr:template "https://w3id.org/okn/i/graph/20230628";
+			rr:constant <https://w3id.org/okn/i/graph/20230628>;
 		];
 	];
 	rr:predicateObjectMap [
@@ -2659,6 +2688,7 @@
 		rr:objectMap [
 			a rr:ObjectMap;
 			rml:reference "owner.confidence";
+			rr:datatype xsd:float
 		];
 	];
 	rr:predicateObjectMap [
@@ -2681,3 +2711,5 @@
 			rml:reference "owner.source";
 		];
 	].
+
+
