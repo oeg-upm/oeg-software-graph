@@ -10,7 +10,7 @@ This repository contain the resources to build a knowledge graph containing the 
 ## Structure
 
 This repository is organized as follows:
-* `data/` contains the input JSON file aggregating the metadata extracted of all repositories from the oeg-upm GitHub organisation
+* `data/` contains the input JSON file aggregating the metadata extracted of all repositories from the oeg-upm GitHub organisation (`somef.json`), along with the produced knowledge graph (`somef-kg.nq`)
 * `mappings/` contains the RML-star mappings needed to construct the knowledge graph from the JSON file
 * `notebooks/` contains two notebooks, for i) the generation of the JSON files and ii) construction and querying of the knowledge graph
 * `best-practices-requirements/` describes the set of representative best practices that are assessed in the repositories represented in the knowledge graph
