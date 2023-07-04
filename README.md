@@ -34,7 +34,7 @@ Finally, start Jupyter notebook and run the notebooks in the `notebooks` folder.
 
 ### Requirements: 
 
-Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `oxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file.
+Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `pyoxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file.
 
 ## Authors
 * [Ana Iglesias-Molina](https://github.com/anaigmo) ([ana.iglesiasm@upm.es](mailto:ana.iglesiasm@upm.es))
