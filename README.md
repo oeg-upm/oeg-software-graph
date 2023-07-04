@@ -41,7 +41,7 @@ If you use this work, please cite our software as follows:
 
 ```bibtex
 @software{ana_iglesias_2023_8114677,
-  author       = {Ana Iglesias and
+  author       = {Ana Iglesias-Molina and
                   Daniel Garijo},
   title        = {oeg-upm/oeg-software-graph: v1.0.0},
   month        = jul,
