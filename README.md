@@ -3,7 +3,7 @@
 
 ## Description
 
-This repository contain the resources to build a knowledge graph containing the catalog of software from the oeg-upm organization in GitHub. The source data is generated with the SOftware Metadata Extraction Framework ([SOMEF](https://github.com/KnowledgeCaptureAndDiscovery/somef)), which extracts the relevant information of a repository from README files and saves it as JSON files. Then, a knowledge graph that relies on the Software Description Ontology ([SDO](https://w3id.org/okn/o/sd)) is created using [RML-star](http://w3id.org/rml/star/spec/) mappings. The resulting knowledge graph is then queried to assess the adoption of a set of representative best practices for research software publishing.
+This repository contains the resources used to build a knowledge graph containing the catalog of software from the oeg-upm organization in GitHub. The source data is generated with the SOftware Metadata Extraction Framework ([SOMEF](https://github.com/KnowledgeCaptureAndDiscovery/somef)), which extracts the relevant information of a repository from README files and saves it as JSON files. Then, a knowledge graph that relies on the Software Description Ontology ([SDO](https://w3id.org/okn/o/sd)) is created using [RML-star](http://w3id.org/rml/star/spec/) mappings. The resulting knowledge graph is then queried to assess the adoption of a set of representative best practices for research software publishing.
 
 <img width="928" alt="Screenshot 2023-07-04 at 18 44 15" src="https://github.com/oeg-upm/oeg-software-graph/assets/36294992/69f693f5-9aa8-4891-bdb9-8b1a2114626b">
 
