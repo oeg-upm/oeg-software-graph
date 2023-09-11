@@ -26,17 +26,24 @@ In order to run the pipeline, you need to install [Jupyter Notebooks](https://ju
 pip install notebook
 ```
 
-Then, install the requirements of the project. Creating an environment is highly recommended: 
+Then, install the requirements of the project. Creating two separate environments is highly recommended (one for extraction, another one for querying), since the libraries used for extracting metadata and creating the knowledge graph have varied dependencies. For installing the extraction requirements, run: 
 
 ```
-pip install -e requirements.txt
+pip install -r requirements_extraction.txt
+```
+
+For installing the construction and querying requirements, run 
+```
+pip install -r requirements.txt
 ```
 
 Finally, start Jupyter notebook and run the notebooks in the `notebooks` folder. 
 
 ### Requirements: 
 
-Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `pyoxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file.
+Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `pyoxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file (construction and querying) and [requirements_extraction.txt](./requirements_extraction.txt) (which will install `somef`).
+
+If you want to play around with SPARQL queries, just run the construction and querying [notebook](./notebooks/kg-construction.ipynb), which will guide you through the KG creation and querying process.
 
 ## Citation
 If you use this work, please cite our software as follows:
