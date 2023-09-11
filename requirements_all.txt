@@ -1,6 +1,7 @@
 morph_kgc==2.3.1
 pyoxigraph==0.3.6
 yatter==1.1.0
+somef==0.9.3
 matplotlib==3.5.0
 yatter==1.1.0
 webencodings==0.5.1
