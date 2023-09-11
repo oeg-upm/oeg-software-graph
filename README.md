@@ -45,7 +45,7 @@ Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `pyoxigraph` pa
 
 If you want to play around with SPARQL queries, just run the construction and querying [notebook](./notebooks/kg-construction.ipynb), which will guide you through the KG creation and querying process.
 
-Click in the Binder button [![Binder](https://mybinder.org/badge_logo.svg)](https://hub.ovh2.mybinder.org/user/oeg-upm-oeg-software-graph-cue4mx2q/lab/workspaces/auto-o/tree/notebooks/kg-construction.ipynb) to show a pre-loaded notebook for testing (it may take a few minutes to load).
+Click in the Binder button [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/oeg-upm/oeg-software-graph/0eb15c400e1854c01851410b757fbcd07e74e498?urlpath=lab%2Ftree%2Fnotebooks%2Fkg-construction.ipynb) to show a pre-loaded notebook for testing (it may take a few minutes to load).
 
 ## Citation
 If you use this work, please cite our software as follows:
