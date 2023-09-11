@@ -1,5 +1,5 @@
 # oeg-software-graph
-[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept) [![DOI](https://zenodo.org/badge/659343054.svg)](https://zenodo.org/badge/latestdoi/659343054)
+[![Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept) [![DOI](https://zenodo.org/badge/659343054.svg)](https://zenodo.org/badge/latestdoi/659343054) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/oeg-upm/oeg-software-graph/HEAD?labpath=notebooks%2Fkg-construction.ipynb)
 
 ## Description
 
@@ -44,6 +44,8 @@ Finally, start Jupyter notebook and run the notebooks in the `notebooks` folder.
 Our pipeline makes use of the `somef`, `yatter`, `morph-kgc` and `pyoxigraph` packages. For more information about the versions used, see the [requirements.txt](./requirements.txt) file (construction and querying) and [requirements_extraction.txt](./requirements_extraction.txt) (which will install `somef`).
 
 If you want to play around with SPARQL queries, just run the construction and querying [notebook](./notebooks/kg-construction.ipynb), which will guide you through the KG creation and querying process.
+
+Click in the Binder button [![Binder](https://mybinder.org/badge_logo.svg)](https://hub.ovh2.mybinder.org/user/oeg-upm-oeg-software-graph-cue4mx2q/lab/workspaces/auto-o/tree/notebooks/kg-construction.ipynb) to show a pre-loaded notebook for testing (it may take a few minutes to load).
 
 ## Citation
 If you use this work, please cite our software as follows:
