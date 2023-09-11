@@ -1,4 +1,4 @@
-morph_kgc==2.3.1
+morph_kgc==2.6.3
 pyoxigraph==0.3.6
 yatter==1.1.0
 matplotlib==3.5.0

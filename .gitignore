@@ -1,2 +1,3 @@
 .DS_Store
 /mappings/venv/
+/notebooks/.ipynb_checkpoints/
