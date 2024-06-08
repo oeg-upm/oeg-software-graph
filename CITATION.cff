@@ -20,6 +20,8 @@ preferred-citation:
     given-names: Daniel
     orcid: "http://orcid.org/0000-0003-0454-7145"
   title: "Towards Assessing FAIR Research Software Best Practices in an Organization Using RDF-star"
+  booktitle: "Proceedings of the Posters and Demo Track of the 19th International Conference on Semantic Systems co-located with 19th International Conference on Semantic Systems (SEMANTiCS 2023)"
+  publisher: "CEUR-WS.org"
   type: article
   year: 2023
   url: https://ceur-ws.org/Vol-3526/paper-09.pdf
