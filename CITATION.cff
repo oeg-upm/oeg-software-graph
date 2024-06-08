@@ -1,5 +1,5 @@
 cff-version: 1.2.1
-message: "If you use this software, please cite it as below."
+message: "If you use this software, please cite both the article from preferred-citation and the software itself."
 title: "OEG Software Graph"
 license: Apache-2.0
 authors:
@@ -11,3 +11,15 @@ authors:
     orcid: "http://orcid.org/0000-0003-0454-7145"
 doi: 10.5281/zenodo.8114677
 version: 1.0.0
+preferred-citation:
+  authors:
+  - family-names: Iglesias-Molina
+    given-names: Ana
+    orcid: "https://orcid.org/0000-0001-5375-8024"
+  - family-names: Garijo
+    given-names: Daniel
+    orcid: "http://orcid.org/0000-0003-0454-7145"
+  title: "Towards Assessing FAIR Research Software Best Practices in an Organization Using RDF-star"
+  type: article
+  year: 2023
+  url: https://ceur-ws.org/Vol-3526/paper-09.pdf
