@@ -51,16 +51,15 @@ Click in the Binder button [![Binder](https://mybinder.org/badge_logo.svg)](http
 If you use this work, please cite our software as follows:
 
 ```bibtex
-@software{ana_iglesias_2023_8114677,
-  author       = {Ana Iglesias-Molina and
-                  Daniel Garijo},
-  title        = {oeg-upm/oeg-software-graph: v1.0.0},
-  month        = jul,
-  year         = 2023,
-  publisher    = {Zenodo},
-  version      = {v1.0.0},
-  doi          = {10.5281/zenodo.8114677},
-  url          = {https://doi.org/10.5281/zenodo.8114677}
+@article{iglesias2023towards,
+  title        = {Towards Assessing FAIR Research Software Best Practices in an Organization Using RDF-star},
+  author       = {Iglesias-Molina, Ana and Garijo, Daniel},
+  year         = {2023},
+  booktitle    = {Proceedings of the Posters and Demo Track of the 19th International Conference on Semantic Systems co-located with 19th International Conference on Semantic Systems (SEMANTiCS 2023)},
+  publisher    = {CEUR-WS.org},
+  series       = {{CEUR} Workshop Proceedings},
+  volume       = {3526},
+  url          = {https://ceur-ws.org/Vol-3526/paper-09.pdf}
 }
 ```
 
